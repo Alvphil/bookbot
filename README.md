@@ -1,3 +1,3 @@
 # bookbot
 
-BookBot is my first guthub project using boot.dev!
+BookBot is my first github project using boot.dev!
