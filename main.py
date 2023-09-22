@@ -2,11 +2,12 @@ def main():
     book = "frankenstein"
     book_path = (f"books/{book}.txt")
     text = get_book_text(book_path)
+    letters = letter_count(text)
+    sorted_list = sort_letters(letters)
     print(f"---Begin report for the book {book}---")
     print(f"{count_words(text)} words were found in {book}")
-    letters = letter_count(text)
-    for letter in letters:
-         print(f"The '{letter}' character was found {letters[letter]}")
+    for item in sorted_list:
+         print(f"The '{item['char']}' character was found {item['num']}")
     print ("-----END OF REPORT-----")
 
 def get_book_text(book_path):
@@ -28,5 +29,16 @@ def letter_count(text):
                if letter in letter_dic:
                     letter_dic[letter] += 1 
      return letter_dic
+
+def sort_on(d):
+    return d["num"]
+
+def sort_letters(letter_dic):
+     letter_list = []
+     for letter in letter_dic:
+          letter_list.append({"char" : letter, "num" : letter_dic[letter]})
+     letter_list.sort(reverse=True, key=sort_on)
+     return letter_list
+     
 
 main()
